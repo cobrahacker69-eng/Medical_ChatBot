@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0f172a;
+    display:flex;
+    color:white;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#111827;
+    padding:30px 20px;
+    border-right:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:50px;
+    text-align:center;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.menu-item{
+    padding:15px;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+    background:rgba(255,255,255,0.03);
+}
+
+.menu-item:hover{
+    background:#2563eb;
+}
+
+.active{
+    background:#2563eb;
+}
+
+/* MAIN CONTENT */
+
+.main-container{
+    flex:1;
+    padding:30px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.topbar h1{
+    font-size:35px;
+}
+
+.status{
+    background:#16a34a;
+    padding:10px 20px;
+    border-radius:30px;
+}
+
+/* CHAT */
+
+.chat-container{
+    background:#111827;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0px 10px 30px rgba(0,0,0,0.4);
+}
+
+/* BOT MESSAGE */
+
+.bot-message{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#2563eb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+.message{
+    background:#1e293b;
+    padding:20px;
+    border-radius:20px;
+    max-width:600px;
+    line-height:1.6;
+}
+
+/* TEXTAREA */
+
+textarea{
+    width:100%;
+    height:180px;
+    margin-top:20px;
+    padding:20px;
+    border:none;
+    outline:none;
+    border-radius:20px;
+    resize:none;
+    background:#1e293b;
+    color:white;
+    font-size:16px;
+}
+
+textarea::placeholder{
+    color:#94a3b8;
+}
+
+/* BUTTON */
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(to right,#2563eb,#06b6d4);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.02);
+}
+
+/* CARDS */
+
+.cards{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#111827;
+    padding:25px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:#1e293b;
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    body{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        height:auto;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* LINKS */
+
+.menu-link{
+    text-decoration:none;
+    color:white;
+}
+
+/* RESULT BOX */
+
+.result-box{
+    background:#111827;
+    padding:30px;
+    border-radius:20px;
+    line-height:1.8;
+}
+
+/* REPORT NUMBER */
+
+.card p{
+    font-size:18px;
+}
+
+/* SCROLL */
+
+body{
+    overflow-y:auto;
+}
