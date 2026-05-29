@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 from chatbot_logic import analyze_symptoms
 from emergency_detector import detect_emergency
 
-app = Flask(__name__, static_folder="public", static_url_path="")
+app = Flask(__name__)
 
 DEMO_REPORTS = [
     {
@@ -117,4 +117,4 @@ def settings():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
