@@ -12,6 +12,54 @@
     <p>Review the main categories captured across recent assessment flows.</p>
 </section>
 
+<section class="report-grid">
+    <article class="panel report-summary-panel">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Summary</p>
+                <h3>Case snapshot</h3>
+            </div>
+        </div>
+        <div class="summary-stats">
+            <div class="summary-stat">
+                <strong>{{ report_summary.total_cases }}</strong>
+                <span>Total cases</span>
+            </div>
+            <div class="summary-stat">
+                <strong>{{ report_summary.urgent_cases }}</strong>
+                <span>Urgent escalations</span>
+            </div>
+            <div class="summary-stat">
+                <strong>{{ report_summary.common_pattern }}</strong>
+                <span>Most common pattern</span>
+            </div>
+        </div>
+    </article>
+
+    <article class="panel trend-panel">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">Distribution</p>
+                <h3>Assessment volume</h3>
+            </div>
+        </div>
+        <div class="trend-list">
+            {% for report in reports %}
+            <div class="trend-row">
+                <div class="trend-copy">
+                    <strong>{{ report.title }}</strong>
+                    <span>{{ report.risk }} risk focus</span>
+                </div>
+                <div class="trend-bar-shell">
+                    <div class="trend-bar trend-{{ report.risk|lower }}" style="width: {{ report.volume }}%;"></div>
+                </div>
+                <span class="trend-value">{{ report.volume }}%</span>
+            </div>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+
 <section class="cards">
     {% for report in reports %}
     <article class="card">

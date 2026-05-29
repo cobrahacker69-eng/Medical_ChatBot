@@ -146,10 +146,6 @@ body {
     margin-bottom: 8px;
 }
 
-.sidebar-card-soft {
-    background: linear-gradient(135deg, rgba(18, 116, 108, 0.22), rgba(255, 255, 255, 0.04));
-}
-
 .main-container {
     padding: 32px;
     display: grid;
@@ -284,27 +280,12 @@ body {
     padding: 24px;
 }
 
-.insight-strip {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.insight-card {
-    background: rgba(255, 250, 244, 0.78);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: var(--shadow);
-}
-
-.insight-label {
-    display: inline-block;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent-strong);
-    margin-bottom: 10px;
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 18px;
 }
 
 .panel-header {
@@ -417,14 +398,121 @@ button:hover,
 
 .cards,
 .result-grid,
-.detail-grid,
-.workflow-grid {
+.detail-grid {
     display: grid;
+    gap: 20px;
+}
+
+.dashboard-grid,
+.report-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 20px;
 }
 
 .cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quick-case-list,
+.activity-list,
+.trend-list,
+.summary-stats {
+    display: grid;
+    gap: 14px;
+}
+
+.quick-case-card {
+    width: 100%;
+    margin-top: 0;
+    text-align: left;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+.quick-case-card strong {
+    margin-bottom: 6px;
+    color: var(--accent-strong);
+}
+
+.quick-case-card span {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.activity-item,
+.summary-stat {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+}
+
+.summary-stat {
+    grid-template-columns: 1fr;
+}
+
+.activity-item:first-child,
+.summary-stat:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.activity-time,
+.trend-copy span,
+.trend-value,
+.summary-stat span {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.summary-stat strong {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--accent-strong);
+}
+
+.trend-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 52px;
+    gap: 14px;
+    align-items: center;
+}
+
+.trend-copy {
+    display: grid;
+}
+
+.trend-bar-shell {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(23, 38, 40, 0.08);
+    overflow: hidden;
+}
+
+.trend-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--accent);
+}
+
+.trend-high {
+    background: var(--danger);
+}
+
+.trend-medium {
+    background: var(--warning);
+}
+
+.trend-low {
+    background: var(--accent);
 }
 
 .cards-feature .card {
@@ -444,29 +532,11 @@ button:hover,
     margin-top: 20px;
 }
 
-.workflow-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .detail-card {
     background: var(--panel-strong);
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 16px;
-}
-
-.workflow-step {
-    background: rgba(255, 255, 255, 0.62);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 22px;
-}
-
-.workflow-step span {
-    display: inline-flex;
-    margin-bottom: 12px;
-    color: var(--accent-strong);
-    font-weight: 700;
 }
 
 .workflow-step h4,
@@ -594,6 +664,43 @@ button:hover,
     align-items: flex-start;
 }
 
+.setting-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.toggle {
+    width: 52px;
+    height: 30px;
+    border-radius: 999px;
+    background: rgba(23, 38, 40, 0.14);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.toggle::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(23, 38, 40, 0.12);
+}
+
+.toggle.is-on {
+    background: rgba(18, 116, 108, 0.3);
+}
+
+.toggle.is-on::after {
+    left: 26px;
+}
+
 .report-bottom .detail-grid {
     margin-top: 0;
 }
@@ -601,12 +708,12 @@ button:hover,
 @media (max-width: 1024px) {
     .shell,
     .hero,
-    .insight-strip,
     .emergency-hero,
+    .dashboard-grid,
+    .report-grid,
     .cards,
     .result-grid,
-    .detail-grid,
-    .workflow-grid {
+    .detail-grid {
         grid-template-columns: 1fr;
     }
 

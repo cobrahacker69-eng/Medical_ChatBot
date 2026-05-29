@@ -14,10 +14,15 @@
 
 <section class="cards">
     {% for item in settings_preview %}
-    <article class="card">
-        <p class="eyebrow">Module</p>
-        <h3>{{ item }}</h3>
-        <p>Enabled for the current assistant configuration.</p>
+    <article class="card setting-card">
+        <div class="setting-head">
+            <div>
+                <p class="eyebrow">Module</p>
+                <h3>{{ item.title }}</h3>
+            </div>
+            <span class="toggle is-on" aria-hidden="true"></span>
+        </div>
+        <p>{{ item.description }}</p>
     </article>
     {% endfor %}
 </section>
