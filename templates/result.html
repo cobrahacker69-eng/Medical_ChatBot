@@ -6,10 +6,10 @@
 {% block content %}
 <section class="result-banner">
     <div>
-        <p class="eyebrow">Case Summary</p>
-        <h3>Structured triage response generated</h3>
+        <p class="eyebrow">Assessment Summary</p>
+        <h3>Review the triage response</h3>
     </div>
-    <p>The result below is designed to be easy to explain during a live demo: what the system noticed, how urgent it seems, and what the next step should be.</p>
+    <p>See the current risk level, likely concern areas, and suggested follow-up actions.</p>
 </section>
 
 <section class="result-grid">
@@ -30,14 +30,6 @@
             <div class="detail-card">
                 <h4>Matched pattern</h4>
                 <p>{{ analysis.matched_pattern }}</p>
-            </div>
-            <div class="detail-card">
-                <h4>Response mode</h4>
-                <p>Prototype-safe symptom guidance</p>
-            </div>
-            <div class="detail-card">
-                <h4>Best use in demo</h4>
-                <p>Explain how the system separates routine concerns from red-flag cases.</p>
             </div>
         </div>
     </article>
