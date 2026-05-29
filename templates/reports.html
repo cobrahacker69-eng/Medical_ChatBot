@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Reports | Medical AI Advisor{% endblock %}
+{% block page_title %}Prototype Reports Snapshot{% endblock %}
+
+{% block content %}
+<section class="cards">
+    {% for report in reports %}
+    <article class="card">
+        <p class="eyebrow">Sample Report</p>
+        <h3>{{ report.title }}</h3>
+        <p>{{ report.summary }}</p>
+        <span class="inline-badge">{{ report.risk }} focus</span>
+    </article>
+    {% endfor %}
+</section>
+
+<section class="panel">
+    <h3>How to present this page</h3>
+    <p>Use these cards as a mock analytics layer: they help explain the product vision, not real patient statistics. That makes the prototype feel more complete in front of faculty.</p>
+</section>
+{% endblock %}

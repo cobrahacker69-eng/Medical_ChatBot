@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Result | Medical AI Advisor{% endblock %}
+{% block page_title %}Symptom Analysis Result{% endblock %}
+
+{% block content %}
+<section class="result-grid">
+    <article class="panel result-main">
+        <p class="eyebrow">Input summary</p>
+        <blockquote class="input-quote">{{ symptoms }}</blockquote>
+        <div class="result-heading">
+            <h3>{{ analysis.title }}</h3>
+            <span class="risk-badge risk-{{ analysis.risk_level|lower|replace(' ', '-') }}">{{ analysis.risk_level }}</span>
+        </div>
+        <p class="summary">{{ analysis.summary }}</p>
+
+        <div class="detail-grid">
+            <div class="detail-card">
+                <h4>Urgency</h4>
+                <p>{{ analysis.urgency }}</p>
+            </div>
+            <div class="detail-card">
+                <h4>Matched pattern</h4>
+                <p>{{ analysis.matched_pattern }}</p>
+            </div>
+        </div>
+    </article>
+
+    <article class="panel">
+        <h3>Possible conditions</h3>
+        <ul class="clean-list">
+            {% for item in analysis.possible_conditions %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+
+    <article class="panel">
+        <h3>Care advice</h3>
+        <ul class="clean-list">
+            {% for item in analysis.care_advice %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+
+    <article class="panel">
+        <h3>Red-flag symptoms</h3>
+        <ul class="clean-list">
+            {% for item in analysis.red_flags %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+
+    <article class="panel">
+        <h3>Follow-up questions</h3>
+        <ul class="clean-list">
+            {% for item in analysis.follow_up_questions %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+</section>
+
+<section class="panel disclaimer-panel">
+    <p class="disclaimer">{{ analysis.disclaimer }}</p>
+    <a class="secondary-button" href="/">Analyze another case</a>
+</section>
+{% endblock %}

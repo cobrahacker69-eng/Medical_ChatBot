@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Settings | Medical AI Advisor{% endblock %}
+{% block page_title %}Prototype Configuration{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <p class="eyebrow">Showcase page</p>
+    <h3>Feature toggles and design intent</h3>
+    <p>This page makes the prototype feel product-minded by showing what modules exist behind the scenes.</p>
+    <ul class="clean-list">
+        {% for item in settings_preview %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

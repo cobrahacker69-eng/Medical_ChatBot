@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Medical AI Advisor{% endblock %}
+{% block page_title %}Clinical Triage Dashboard{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <span class="hero-badge">Demo scenario: first-level symptom triage</span>
+        <h3>Turn simple symptom descriptions into a clean, explainable care summary.</h3>
+        <p>This prototype helps demonstrate how an assistant can collect symptoms, detect emergencies, and guide a patient toward the right next step.</p>
+    </div>
+    <div class="hero-metrics">
+        <div class="metric-card">
+            <strong>24/7</strong>
+            <span>prototype availability</span>
+        </div>
+        <div class="metric-card">
+            <strong>3-step</strong>
+            <span>triage flow</span>
+        </div>
+        <div class="metric-card">
+            <strong>Safe</strong>
+            <span>non-diagnostic wording</span>
+        </div>
+    </div>
+</section>
+
+{% if error %}
+<div class="alert">{{ error }}</div>
+{% endif %}
+
+<section class="panel">
+    <div class="panel-header">
+        <div>
+            <p class="eyebrow">Patient Input</p>
+            <h3>Describe symptoms</h3>
+        </div>
+        <p class="panel-note">Example: "I have fever and cough since yesterday, and I feel weak."</p>
+    </div>
+
+    <form action="/analyze" method="POST" class="triage-form">
+        <textarea name="symptoms" placeholder="Enter symptoms, duration, severity, and any important history..." required></textarea>
+        <div class="chip-row">
+            <span class="chip">Fever</span>
+            <span class="chip">Cough</span>
+            <span class="chip">Headache</span>
+            <span class="chip">Vomiting</span>
+            <span class="chip">Chest pain</span>
+        </div>
+        <button type="submit">Analyze symptoms</button>
+    </form>
+</section>
+
+<section class="cards">
+    <article class="card">
+        <p class="eyebrow">Step 1</p>
+        <h3>Symptom capture</h3>
+        <p>Collects patient-friendly free-text input instead of forcing rigid checkbox forms.</p>
+    </article>
+    <article class="card">
+        <p class="eyebrow">Step 2</p>
+        <h3>Risk explanation</h3>
+        <p>Returns likely concern areas, urgency, red flags, and guidance in a structured format.</p>
+    </article>
+    <article class="card">
+        <p class="eyebrow">Step 3</p>
+        <h3>Escalation path</h3>
+        <p>Shows when the case should move from self-care to urgent or emergency support.</p>
+    </article>
+</section>
+{% endblock %}

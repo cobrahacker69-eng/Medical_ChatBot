@@ -1,26 +1,47 @@
-# Medical AI Advisor Chatbot
+# Medical AI Advisor Prototype
 
-AI-powered chatbot that analyzes symptoms
-and provides patient-friendly medical guidance.
+This project is a polished Flask prototype for a symptom-checking assistant.
+It is designed for academic demos, UI showcases, and basic triage-flow presentations.
 
-## Features
+## Demo Highlights
 
-- Symptom analysis
-- Emergency detection
-- Risk assessment
-- Patient-friendly responses
-- Multi-turn style logic
+- Clean dashboard-style interface
+- Structured symptom analysis cards
+- Emergency escalation screen
+- Demo reports page for presentation storytelling
+- Settings preview to make the prototype feel product-ready
 
-## Technologies Used
+## Important Note
 
-- Python
-- Flask
-- HTML
-- CSS
-- JavaScript
+This is a prototype only.
+It does not provide a real medical diagnosis and should not replace licensed medical advice.
 
-## Run Project
+## Run Locally
 
+```bash
 pip install -r requirements.txt
-
 python app.py
+```
+
+Open `http://127.0.0.1:5000`
+
+## Deploy To Vercel
+
+This repo is configured for Vercel Python Functions.
+
+### Files used for Vercel
+
+- `api/index.py`
+- `vercel.json`
+- `requirements.txt`
+
+### Steps
+
+1. Push this project to GitHub.
+2. Go to [Vercel](https://vercel.com/).
+3. Click `Add New Project`.
+4. Import the GitHub repository.
+5. Keep the framework preset as `Other`.
+6. Click `Deploy`.
+
+Vercel will route all requests through the Flask app automatically.

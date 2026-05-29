@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Emergency Guide | Medical AI Advisor{% endblock %}
+{% block page_title %}Emergency Escalation Guide{% endblock %}
+
+{% block content %}
+<section class="panel emergency-panel">
+    <p class="eyebrow">Immediate response</p>
+    <h3>Use this screen during the demo to show safe escalation behavior.</h3>
+    <p>If red-flag symptoms appear, the prototype switches from routine guidance to emergency support messaging.</p>
+</section>
+
+<section class="cards">
+    <article class="card">
+        <h3>Call emergency help if there is</h3>
+        <ul class="clean-list">
+            {% for item in emergency_support.when_to_call %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+    <article class="card">
+        <h3>While waiting for help</h3>
+        <ul class="clean-list">
+            {% for item in emergency_support.while_waiting %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+    <article class="card highlight-card">
+        <h3>Prototype note</h3>
+        <p>This feature is intentionally conservative so the demo clearly prioritizes patient safety over overconfident advice.</p>
+    </article>
+</section>
+{% endblock %}

@@ -1,17 +1,97 @@
-ROLE_PROMPT = """
-You are a professional medical advisor chatbot.
-Provide:
-1. Possible conditions
-2. Risk level
-3. Emergency warning signs
-4. Patient-friendly advice
-"""
+DISCLAIMER = (
+    "Prototype only: this tool does not provide a diagnosis and should not replace a licensed clinician."
+)
 
-EMERGENCY_PROMPT = """
-If symptoms indicate emergency,
-immediately advise contacting emergency services.
-"""
+FALLBACK_QUESTIONS = [
+    "How long have the symptoms been present?",
+    "What is the severity: mild, moderate, or severe?",
+    "Are there associated symptoms such as fever, vomiting, or breathing difficulty?",
+    "Does the person have any major medical history or current medicines?",
+]
 
-FALLBACK_PROMPT = """
-Ask follow-up questions if information is incomplete.
-"""
+SYMPTOM_PATTERNS = [
+    {
+        "title": "Respiratory infection pattern",
+        "priority": 9,
+        "risk_level": "Medium",
+        "urgency": "Home care with monitoring",
+        "summary": "Fever with cough commonly appears in viral respiratory infections and needs hydration, rest, and watchful monitoring.",
+        "possible_conditions": ["Viral fever", "Influenza", "COVID-like illness", "Upper respiratory infection"],
+        "care_advice": ["Drink fluids regularly.", "Rest and monitor temperature.", "Seek in-person care if fever persists or worsens."],
+        "red_flags": ["Breathing difficulty", "Persistent high fever", "Confusion", "Low oxygen if monitored"],
+        "follow_up_questions": ["How many days has the fever been present?", "Is the cough dry or with mucus?", "Is there any breathing difficulty?"],
+        "keywords_all": ["fever", "cough"],
+        "keywords_any": [],
+        "matched_keywords": ["fever", "cough"],
+    },
+    {
+        "title": "Gastrointestinal upset pattern",
+        "priority": 8,
+        "risk_level": "Medium",
+        "urgency": "Monitor hydration",
+        "summary": "Vomiting with diarrhea may suggest food poisoning or gastroenteritis, with dehydration being the main short-term risk.",
+        "possible_conditions": ["Food poisoning", "Gastroenteritis", "Stomach infection"],
+        "care_advice": ["Use oral rehydration fluids if available.", "Take small sips frequently.", "Avoid oily or spicy foods until better."],
+        "red_flags": ["Blood in stool", "Unable to keep fluids down", "Severe weakness", "Reduced urination"],
+        "follow_up_questions": ["How often is vomiting or diarrhea happening?", "Any fever or abdominal pain?", "Was any outside or stale food eaten recently?"],
+        "keywords_all": ["vomiting", "diarrhea"],
+        "keywords_any": [],
+        "matched_keywords": ["vomiting", "diarrhea"],
+    },
+    {
+        "title": "Headache or migraine pattern",
+        "priority": 6,
+        "risk_level": "Low to Medium",
+        "urgency": "Observation and routine consultation if recurring",
+        "summary": "Headache can be linked with stress, dehydration, eye strain, or migraine features.",
+        "possible_conditions": ["Migraine", "Tension headache", "Dehydration", "Sinus-related headache"],
+        "care_advice": ["Rest in a quiet area.", "Drink water.", "Reduce screen exposure for a while."],
+        "red_flags": ["Sudden worst-ever headache", "Weakness or slurred speech", "Repeated vomiting", "High fever with neck stiffness"],
+        "follow_up_questions": ["Is there sensitivity to light or sound?", "Any fever or vomiting?", "Is this a new or recurrent headache?"],
+        "keywords_all": ["headache"],
+        "keywords_any": [],
+        "matched_keywords": ["headache"],
+    },
+    {
+        "title": "Urinary or blood sugar concern pattern",
+        "priority": 7,
+        "risk_level": "Medium to High",
+        "urgency": "Medical review advised",
+        "summary": "Frequent urination and excessive thirst can suggest diabetes or dehydration-related causes and should be reviewed.",
+        "possible_conditions": ["High blood sugar", "Diabetes", "Dehydration"],
+        "care_advice": ["Maintain fluid intake.", "Avoid excess sugary drinks.", "Arrange medical testing if symptoms persist."],
+        "red_flags": ["Confusion", "Vomiting", "Rapid breathing", "Severe weakness"],
+        "follow_up_questions": ["How long has this been happening?", "Any recent weight loss?", "Any history of diabetes in the patient?"],
+        "keywords_all": [],
+        "keywords_any": [["frequent urination", "urinating often"], ["excessive thirst", "very thirsty"]],
+        "matched_keywords": ["frequent urination", "excessive thirst"],
+    },
+    {
+        "title": "Skin allergy pattern",
+        "priority": 5,
+        "risk_level": "Low",
+        "urgency": "Routine care",
+        "summary": "Rash and itching may be related to allergy, irritation, or heat-related skin issues.",
+        "possible_conditions": ["Allergy", "Heat rash", "Fungal irritation"],
+        "care_advice": ["Keep the area clean and dry.", "Avoid scratching.", "Track any new soaps, foods, or medicines."],
+        "red_flags": ["Facial swelling", "Breathing difficulty", "Rapidly spreading rash", "High fever"],
+        "follow_up_questions": ["When did the rash start?", "Any new food, soap, or medicine?", "Is there swelling or breathing trouble?"],
+        "keywords_all": [],
+        "keywords_any": [["skin rash", "rash"], ["itching", "itchy"]],
+        "matched_keywords": ["rash", "itching"],
+    },
+    {
+        "title": "Urinary infection or stone pattern",
+        "priority": 8,
+        "risk_level": "High",
+        "urgency": "Same-day medical review",
+        "summary": "Back pain with painful urination can suggest a urinary tract issue that may need prompt treatment.",
+        "possible_conditions": ["Urinary tract infection", "Kidney stone"],
+        "care_advice": ["Increase water intake unless a doctor advised otherwise.", "Do not ignore fever or worsening pain.", "Seek evaluation soon."],
+        "red_flags": ["Fever with chills", "Blood in urine", "Severe flank pain", "Vomiting"],
+        "follow_up_questions": ["Is there fever?", "Any blood in the urine?", "Is pain one-sided or severe?"],
+        "keywords_all": ["back pain"],
+        "keywords_any": [["painful urination", "burning urination"]],
+        "matched_keywords": ["back pain", "painful urination"],
+    },
+]

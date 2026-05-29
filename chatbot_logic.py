@@ -1,464 +1,77 @@
-def analyze_symptoms(symptoms):
-
-    symptoms = symptoms.lower()
-
-    # ======================================================
-    # FEVER + COUGH
-    # ======================================================
-    if "fever" in symptoms and "cough" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Viral Fever
-• Flu
-• COVID-19
-• Respiratory Infection
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Drink warm fluids
-• Take proper rest
-• Steam inhalation recommended
-
-🚨 Emergency Signs:
-• Difficulty breathing
-• High fever above 103°F
-"""
-
-    # ======================================================
-    # HEADACHE
-    # ======================================================
-    elif "headache" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Migraine
-• Stress
-• Dehydration
-• Sinus Infection
-
-📊 Risk Level:
-Low to Medium Risk
-
-💊 Advice:
-• Sleep properly
-• Stay hydrated
-• Reduce screen exposure
-"""
-
-    # ======================================================
-    # CHEST PAIN
-    # ======================================================
-    elif "chest pain" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Heart Attack
-• Anxiety Attack
-• Acid Reflux
-
-📊 Risk Level:
-High Risk
-
-🚨 Seek immediate medical help.
-"""
-
-    # ======================================================
-    # STOMACH PAIN
-    # ======================================================
-    elif "stomach pain" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Gastric Infection
-• Food Poisoning
-• Acidity
-• Ulcer
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Eat light food
-• Avoid oily items
-• Drink clean water
-"""
-
-    # ======================================================
-    # DIABETES
-    # ======================================================
-    elif "frequent urination" in symptoms or "excessive thirst" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Diabetes
-• High Blood Sugar
-
-📊 Risk Level:
-Medium to High Risk
-
-💊 Advice:
-• Reduce sugar intake
-• Exercise regularly
-• Monitor glucose level
-"""
-
-    # ======================================================
-    # DENGUE
-    # ======================================================
-    elif "body pain" in symptoms and "high fever" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Dengue
-• Malaria
-• Viral Fever
-
-📊 Risk Level:
-High Risk
-
-💊 Advice:
-• Stay hydrated
-• Blood test recommended
-
-🚨 Watch for bleeding symptoms.
-"""
-
-    # ======================================================
-    # ASTHMA
-    # ======================================================
-    elif "shortness of breath" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Asthma
-• Allergy
-• Lung Infection
-
-📊 Risk Level:
-High Risk
-
-💊 Advice:
-• Avoid dust and smoke
-• Use inhaler if prescribed
-"""
-
-    # ======================================================
-    # SKIN ALLERGY
-    # ======================================================
-    elif "skin rash" in symptoms or "itching" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Allergy
-• Fungal Infection
-• Heat Rash
-
-📊 Risk Level:
-Low Risk
-
-💊 Advice:
-• Keep skin dry
-• Avoid scratching
-"""
-
-    # ======================================================
-    # TYPHOID
-    # ======================================================
-    elif "weakness" in symptoms and "fever" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Typhoid
-• Viral Infection
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Eat healthy food
-• Drink boiled water
-"""
-
-    # ======================================================
-    # FOOD POISONING
-    # ======================================================
-    elif "vomiting" in symptoms and "diarrhea" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Food Poisoning
-• Gastroenteritis
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• ORS recommended
-• Stay hydrated
-"""
-
-    # ======================================================
-    # HYPERTENSION
-    # ======================================================
-    elif "dizziness" in symptoms and "blurred vision" in symptoms:
-        return """
-🩺 Possible Conditions:
-• High Blood Pressure
-• Stress Disorder
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Reduce salt intake
-• Monitor blood pressure
-"""
-
-    # ======================================================
-    # ANEMIA
-    # ======================================================
-    elif "fatigue" in symptoms and "pale skin" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Anemia
-• Iron Deficiency
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Eat iron-rich food
-• Blood test advised
-"""
-
-    # ======================================================
-    # KIDNEY STONE
-    # ======================================================
-    elif "back pain" in symptoms and "painful urination" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Kidney Stone
-• Urinary Infection
-
-📊 Risk Level:
-High Risk
-
-💊 Advice:
-• Drink plenty of water
-"""
-
-    # ======================================================
-    # DEPRESSION
-    # ======================================================
-    elif "sadness" in symptoms or "stress" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Stress
-• Anxiety
-• Depression
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Take proper sleep
-• Practice meditation
-"""
-
-    # ======================================================
-    # COLD / ALLERGY
-    # ======================================================
-    elif "sneezing" in symptoms and "runny nose" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Cold
-• Allergy
-
-📊 Risk Level:
-Low Risk
-
-💊 Advice:
-• Drink warm fluids
-"""
-
-    # ======================================================
-    # EYE INFECTION
-    # ======================================================
-    elif "red eyes" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Eye Infection
-• Conjunctivitis
-
-📊 Risk Level:
-Low Risk
-
-💊 Advice:
-• Avoid touching eyes
-"""
-
-    # ======================================================
-    # PNEUMONIA
-    # ======================================================
-    elif "cough" in symptoms and "chest tightness" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Pneumonia
-• Lung Infection
-
-📊 Risk Level:
-High Risk
-
-💊 Advice:
-• Medical consultation needed
-"""
-
-    # ======================================================
-    # APPENDICITIS
-    # ======================================================
-    elif "lower right stomach pain" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Appendicitis
-
-📊 Risk Level:
-High Risk
-
-🚨 Immediate medical attention required.
-"""
-
-    # ======================================================
-    # ARTHRITIS
-    # ======================================================
-    elif "joint pain" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Arthritis
-• Joint Inflammation
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Gentle exercise
-• Avoid heavy strain
-"""
-
-    # ======================================================
-    # SINUSITIS
-    # ======================================================
-    elif "facial pain" in symptoms and "blocked nose" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Sinusitis
-
-📊 Risk Level:
-Low to Medium Risk
-
-💊 Advice:
-• Steam inhalation
-• Warm fluids
-"""
-
-    # ======================================================
-    # UTI
-    # ======================================================
-    elif "burning urination" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Urinary Tract Infection
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Drink more water
-• Maintain hygiene
-"""
-
-    # ======================================================
-    # THYROID
-    # ======================================================
-    elif "weight gain" in symptoms and "fatigue" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Thyroid Disorder
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Thyroid test recommended
-"""
-
-    # ======================================================
-    # INSOMNIA
-    # ======================================================
-    elif "difficulty sleeping" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Insomnia
-• Stress
-
-📊 Risk Level:
-Low to Medium Risk
-
-💊 Advice:
-• Avoid caffeine
-• Sleep on time
-"""
-
-    # ======================================================
-    # EAR INFECTION
-    # ======================================================
-    elif "ear pain" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Ear Infection
-
-📊 Risk Level:
-Low to Medium Risk
-
-💊 Advice:
-• Avoid inserting objects into ear
-"""
-
-    # ======================================================
-    # DEHYDRATION
-    # ======================================================
-    elif "dry mouth" in symptoms and "dizziness" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Dehydration
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Drink water and ORS
-"""
-
-    # ======================================================
-    # MIGRAINE
-    # ======================================================
-    elif "sensitivity to light" in symptoms:
-        return """
-🩺 Possible Conditions:
-• Migraine
-
-📊 Risk Level:
-Medium Risk
-
-💊 Advice:
-• Rest in dark room
-"""
-
-    # ======================================================
-    # FALLBACK
-    # ======================================================
+from prompts import DISCLAIMER, FALLBACK_QUESTIONS, SYMPTOM_PATTERNS
+
+
+def _default_response(symptoms):
+    return {
+        "title": "More information is needed",
+        "risk_level": "Undetermined",
+        "urgency": "Needs more detail",
+        "summary": (
+            "The current symptom description is too broad for a helpful prototype-level triage result."
+        ),
+        "possible_conditions": ["Unable to estimate yet"],
+        "care_advice": [
+            "Share the main symptom, how long it has been present, and how severe it feels.",
+            "Mention age group, relevant medical history, and any medicines already taken.",
+        ],
+        "red_flags": [
+            "Breathing difficulty",
+            "Severe pain",
+            "Fainting or confusion",
+            "Bleeding that does not stop",
+        ],
+        "follow_up_questions": FALLBACK_QUESTIONS,
+        "matched_pattern": "No strong symptom cluster matched",
+        "disclaimer": DISCLAIMER,
+        "input_summary": symptoms,
+    }
+
+
+def analyze_symptoms(symptoms, emergency=False):
+    normalized = symptoms.lower().strip()
+    matches = []
+
+    for pattern in SYMPTOM_PATTERNS:
+        if all(keyword in normalized for keyword in pattern["keywords_all"]) and all(
+            any(option in normalized for option in group) for group in pattern["keywords_any"]
+        ):
+            matches.append(pattern)
+
+    if not matches:
+        response = _default_response(symptoms)
     else:
-        return """
-🤖 More information required.
+        best_match = max(matches, key=lambda item: item["priority"])
+        response = {
+            "title": best_match["title"],
+            "risk_level": best_match["risk_level"],
+            "urgency": best_match["urgency"],
+            "summary": best_match["summary"],
+            "possible_conditions": best_match["possible_conditions"],
+            "care_advice": best_match["care_advice"],
+            "red_flags": best_match["red_flags"],
+            "follow_up_questions": best_match["follow_up_questions"],
+            "matched_pattern": ", ".join(best_match["matched_keywords"]),
+            "disclaimer": DISCLAIMER,
+            "input_summary": symptoms,
+        }
 
-Please provide:
-• Symptom duration
-• Severity
-• Age
-• Additional symptoms
+    if emergency:
+        response["title"] = "Emergency support recommended"
+        response["risk_level"] = "Critical"
+        response["urgency"] = "Immediate medical attention"
+        response["summary"] = (
+            "The symptom description contains red-flag terms that should be treated as a medical emergency."
+        )
+        response["care_advice"] = [
+            "Contact local emergency services or go to the nearest emergency department now.",
+            "Do not drive yourself if you feel faint, breathless, or have severe chest symptoms.",
+            "Keep another person nearby if possible.",
+        ]
+        response["red_flags"] = [
+            "Chest pain or pressure",
+            "Shortness of breath",
+            "Severe bleeding",
+            "Loss of consciousness",
+        ]
 
-Example:
-"I have fever and cough for 2 days."
-"""
+    return response
