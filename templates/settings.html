@@ -20,7 +20,15 @@
                 <p class="eyebrow">Module</p>
                 <h3>{{ item.title }}</h3>
             </div>
-            <span class="toggle is-on" aria-hidden="true"></span>
+            <button
+                type="button"
+                class="toggle-button {% if item.enabled %}is-on{% endif %}"
+                role="switch"
+                aria-checked="{{ 'true' if item.enabled else 'false' }}"
+                aria-label="{{ item.title }}"
+            >
+                <span class="toggle-thumb"></span>
+            </button>
         </div>
         <p>{{ item.description }}</p>
     </article>
