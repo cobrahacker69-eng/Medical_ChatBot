@@ -333,3 +333,10 @@ SYMPTOM_PATTERNS = [
         "summary": "Bleeding, severe abdominal pain, or severe headache during pregnancy needs urgent assessment.",
         "possible_conditions": ["Pregnancy complication", "Preeclampsia", "Miscarriage risk"],
         "care_advice": ["Seek emergency medical care.", "Avoid heavy activity.", "Monitor bleeding and pain."],
+        "red_flags": ["Heavy bleeding", "Severe abdominal pain", "Severe headache", "Reduced fetal movement"],
+        "follow_up_questions": ["How far along is the pregnancy?", "Is there bleeding?", "Any severe headache or swelling?"],
+        "keywords_all": [],
+        "keywords_any": [["pregnant", "pregnancy"], ["bleeding", "severe abdominal pain", "severe headache"]],
+        "matched_keywords": ["pregnancy", "bleeding"],
+    },
+]
