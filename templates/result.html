@@ -4,6 +4,14 @@
 {% block page_title %}Symptom Analysis Result{% endblock %}
 
 {% block content %}
+<section class="result-banner">
+    <div>
+        <p class="eyebrow">Case Summary</p>
+        <h3>Structured triage response generated</h3>
+    </div>
+    <p>The result below is designed to be easy to explain during a live demo: what the system noticed, how urgent it seems, and what the next step should be.</p>
+</section>
+
 <section class="result-grid">
     <article class="panel result-main">
         <p class="eyebrow">Input summary</p>
@@ -23,10 +31,18 @@
                 <h4>Matched pattern</h4>
                 <p>{{ analysis.matched_pattern }}</p>
             </div>
+            <div class="detail-card">
+                <h4>Response mode</h4>
+                <p>Prototype-safe symptom guidance</p>
+            </div>
+            <div class="detail-card">
+                <h4>Best use in demo</h4>
+                <p>Explain how the system separates routine concerns from red-flag cases.</p>
+            </div>
         </div>
     </article>
 
-    <article class="panel">
+    <article class="panel stack-panel">
         <h3>Possible conditions</h3>
         <ul class="clean-list">
             {% for item in analysis.possible_conditions %}
@@ -35,7 +51,7 @@
         </ul>
     </article>
 
-    <article class="panel">
+    <article class="panel stack-panel">
         <h3>Care advice</h3>
         <ul class="clean-list">
             {% for item in analysis.care_advice %}
@@ -44,7 +60,7 @@
         </ul>
     </article>
 
-    <article class="panel">
+    <article class="panel stack-panel attention-panel">
         <h3>Red-flag symptoms</h3>
         <ul class="clean-list">
             {% for item in analysis.red_flags %}
@@ -53,7 +69,7 @@
         </ul>
     </article>
 
-    <article class="panel">
+    <article class="panel stack-panel">
         <h3>Follow-up questions</h3>
         <ul class="clean-list">
             {% for item in analysis.follow_up_questions %}

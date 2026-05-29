@@ -7,8 +7,12 @@
 <section class="hero">
     <div class="hero-copy">
         <span class="hero-badge">Demo scenario: first-level symptom triage</span>
-        <h3>Turn simple symptom descriptions into a clean, explainable care summary.</h3>
-        <p>This prototype helps demonstrate how an assistant can collect symptoms, detect emergencies, and guide a patient toward the right next step.</p>
+        <h3>Give your medical chatbot a sharper, more professional first impression.</h3>
+        <p>This prototype turns a plain symptom form into a guided health-tech experience with clear risk communication, emergency escalation, and presentable UI structure.</p>
+        <div class="hero-actions">
+            <a class="secondary-button" href="#triage-form">Start demo flow</a>
+            <a class="ghost-link" href="/emergency">See emergency mode</a>
+        </div>
     </div>
     <div class="hero-metrics">
         <div class="metric-card">
@@ -26,11 +30,26 @@
     </div>
 </section>
 
+<section class="insight-strip">
+    <article class="insight-card">
+        <span class="insight-label">Prototype Goal</span>
+        <p>Demonstrate patient-friendly symptom triage without pretending to replace a doctor.</p>
+    </article>
+    <article class="insight-card">
+        <span class="insight-label">Best Demo Input</span>
+        <p>Try “I have fever and cough for 2 days” followed by “I have chest pain and shortness of breath.”</p>
+    </article>
+    <article class="insight-card">
+        <span class="insight-label">Presentation Strength</span>
+        <p>Each page now supports the story: intake, analysis, emergency handling, and product overview.</p>
+    </article>
+</section>
+
 {% if error %}
 <div class="alert">{{ error }}</div>
 {% endif %}
 
-<section class="panel">
+<section class="panel intake-panel" id="triage-form">
     <div class="panel-header">
         <div>
             <p class="eyebrow">Patient Input</p>
@@ -42,31 +61,62 @@
     <form action="/analyze" method="POST" class="triage-form">
         <textarea name="symptoms" placeholder="Enter symptoms, duration, severity, and any important history..." required></textarea>
         <div class="chip-row">
-            <span class="chip">Fever</span>
-            <span class="chip">Cough</span>
-            <span class="chip">Headache</span>
-            <span class="chip">Vomiting</span>
-            <span class="chip">Chest pain</span>
+            <button type="button" class="chip">Fever</button>
+            <button type="button" class="chip">Cough</button>
+            <button type="button" class="chip">Headache</button>
+            <button type="button" class="chip">Vomiting</button>
+            <button type="button" class="chip">Chest pain</button>
+        </div>
+        <div class="sample-cases">
+            <button type="button" class="sample-case" data-text="I have fever and cough for 2 days, and I feel weak.">Regular case</button>
+            <button type="button" class="sample-case" data-text="I have chest pain and shortness of breath right now.">Emergency case</button>
+            <button type="button" class="sample-case" data-text="I have vomiting and diarrhea since morning and cannot eat properly.">GI case</button>
         </div>
         <button type="submit">Analyze symptoms</button>
     </form>
 </section>
 
-<section class="cards">
-    <article class="card">
+<section class="cards cards-feature">
+    <article class="card feature-card">
         <p class="eyebrow">Step 1</p>
         <h3>Symptom capture</h3>
         <p>Collects patient-friendly free-text input instead of forcing rigid checkbox forms.</p>
     </article>
-    <article class="card">
+    <article class="card feature-card">
         <p class="eyebrow">Step 2</p>
         <h3>Risk explanation</h3>
         <p>Returns likely concern areas, urgency, red flags, and guidance in a structured format.</p>
     </article>
-    <article class="card">
+    <article class="card feature-card">
         <p class="eyebrow">Step 3</p>
         <h3>Escalation path</h3>
         <p>Shows when the case should move from self-care to urgent or emergency support.</p>
     </article>
+</section>
+
+<section class="panel workflow-panel">
+    <div class="panel-header">
+        <div>
+            <p class="eyebrow">System Workflow</p>
+            <h3>How the prototype thinks</h3>
+        </div>
+    </div>
+    <div class="workflow-grid">
+        <div class="workflow-step">
+            <span>01</span>
+            <h4>Input symptoms</h4>
+            <p>User enters symptoms in natural language.</p>
+        </div>
+        <div class="workflow-step">
+            <span>02</span>
+            <h4>Check emergency terms</h4>
+            <p>Critical keywords trigger stronger escalation guidance.</p>
+        </div>
+        <div class="workflow-step">
+            <span>03</span>
+            <h4>Show structured result</h4>
+            <p>The interface explains risk, urgency, care advice, and next questions.</p>
+        </div>
+    </div>
 </section>
 {% endblock %}

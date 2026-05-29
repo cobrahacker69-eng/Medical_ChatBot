@@ -4,6 +4,14 @@
 {% block page_title %}Prototype Reports Snapshot{% endblock %}
 
 {% block content %}
+<section class="report-hero panel">
+    <div>
+        <p class="eyebrow">Mock Analytics Layer</p>
+        <h3>Use this page to explain the product vision beyond a single chatbot screen.</h3>
+    </div>
+    <p>These summary cards make the project look more like a system and less like a single-form assignment.</p>
+</section>
+
 <section class="cards">
     {% for report in reports %}
     <article class="card">
@@ -15,8 +23,16 @@
     {% endfor %}
 </section>
 
-<section class="panel">
-    <h3>How to present this page</h3>
-    <p>Use these cards as a mock analytics layer: they help explain the product vision, not real patient statistics. That makes the prototype feel more complete in front of faculty.</p>
+<section class="panel report-bottom">
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h4>What it shows</h4>
+            <p>How the assistant could group common cases and track care patterns.</p>
+        </div>
+        <div class="detail-card">
+            <h4>Why it matters</h4>
+            <p>Faculty often respond better when the prototype looks like part of a larger platform.</p>
+        </div>
+    </div>
 </section>
 {% endblock %}

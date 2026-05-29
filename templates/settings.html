@@ -4,14 +4,26 @@
 {% block page_title %}Prototype Configuration{% endblock %}
 
 {% block content %}
+<section class="panel settings-hero">
+    <div>
+        <p class="eyebrow">Showcase page</p>
+        <h3>Feature modules and system controls</h3>
+    </div>
+    <p>This screen helps the prototype look more product-like by showing the modules that shape the triage experience.</p>
+</section>
+
+<section class="cards">
+    {% for item in settings_preview %}
+    <article class="card">
+        <p class="eyebrow">Module</p>
+        <h3>{{ item }}</h3>
+        <p>Configured as part of the current demonstration build.</p>
+    </article>
+    {% endfor %}
+</section>
+
 <section class="panel">
-    <p class="eyebrow">Showcase page</p>
-    <h3>Feature toggles and design intent</h3>
-    <p>This page makes the prototype feel product-minded by showing what modules exist behind the scenes.</p>
-    <ul class="clean-list">
-        {% for item in settings_preview %}
-        <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
+    <h3>Why include this page</h3>
+    <p>It suggests that the chatbot is part of a broader application with configurable modules, which makes the prototype feel more mature during review.</p>
 </section>
 {% endblock %}
